@@ -1,0 +1,5 @@
+xterm*faceName: Liberation Mono:size=10:antialias=false
+xterm*font: 7x53D
+xterm*VT100.Translations: #override \
+                 Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+                 Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)

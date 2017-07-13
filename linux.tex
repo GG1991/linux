@@ -1,0 +1,411 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Frequently Asked Questions
+% LaTeX Template
+% Version 1.0 (22/7/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Adam Glesser (adamglesser@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.3in]{geometry} % Required to make the margins smaller to fit more content on each page
+\usepackage[linkcolor=blue]{hyperref} % Required to create hyperlinks to questions from elsewhere in the document
+\hypersetup{pdfborder={0 0 0}, colorlinks=true, urlcolor=blue} % Specify a color for hyperlinks
+\usepackage{todonotes} % Required for the boxes that questions appear in
+\usepackage{tocloft} % Required to give customize the table of contents to display questions
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage{palatino} % Use the Palatino font
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+% Create and define the list of questions
+\newlistof{questions}{faq}{\large List of Frequently Asked Questions} % This creates a new table of contents-like environment that will output a file with extension .faq
+\setlength\cftbeforefaqtitleskip{.5em} % Adjusts the vertical space between the title and subtitle
+\setlength\cftafterfaqtitleskip{.5em} % Adjusts the vertical space between the subtitle and the first question
+\setlength\cftparskip{.5em} % Adjusts the vertical space between questions in the list of questions
+
+% Create the command used for questions
+\newcommand{\question}[1] % This is what you will use to create a new question
+{
+\refstepcounter{questions} % Increases the questions counter, this can be referenced anywhere with \thequestions
+\par\noindent % Creates a new unindented paragraph
+\phantomsection % Needed for hyperref compatibility with the \addcontensline command
+\addcontentsline{faq}{questions}{#1} % Adds the question to the list of questions
+\todo[inline, color=white]{\textbf{#1}} % Uses the todonotes package to create a fancy box to put the question
+\vspace{.5em} % White space after the question before the start of the answer
+}
+
+% Uncomment the line below to get rid of the trailing dots in the table of contents
+%\renewcommand{\cftdot}{}
+
+% Uncomment the two lines below to get rid of the numbers in the table of contents
+%\let\Contentsline\contentsline
+%\renewcommand\contentsline[3]{\Contentsline{#1}{#2}{}}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE AND LIST OF QUESTIONS
+%----------------------------------------------------------------------------------------
+
+% \begin{center}
+% \Huge{\bf \emph{A Template for FAQ's}} % Main title
+% \end{center}
+
+% \listofquestions % This prints the subtitle and a list of all of your questions
+
+% \newpage % Comment this if you would like your questions and answers to start immediately after table of questions
+
+%----------------------------------------------------------------------------------------
+%	QUESTIONS AND ANSWERS
+%----------------------------------------------------------------------------------------
+
+\question{Marenostrum}\label{Marenostrum}
+
+Copying files to and from marenostrum:
+\begin{verbatim}
+pscp <path/file name> bsc21774@mn1.bsc.es:<path/file name>
+pscp bsc21774@mn1.bsc.es:<path/file name> <path/file name>
+\end{verbatim}
+For directories we add the option \texttt{-r} after  \texttt{pscp}.\\
+
+Check out \texttt{Alya}:
+\begin{verbatim}
+mkdir <path/Alya>
+svn co svn+ssh://bsc21774@mn1.bsc.es/gpfs/projects/bsc21/svnroot/Alya/Trunk <path/Alya>
+\end{verbatim}
+
+
+Search, load and remove modules:
+\begin{verbatim}
+module list
+module avail
+module load <module name>
+module purge <module name>
+\end{verbatim}
+
+Avoid ssh's verification for known hosts, in:
+\begin{verbatim}
+/etc/ssh/ssh_config
+\end{verbatim}
+
+\begin{verbatim}
+Host mn1.bsc.es
+   StrictHostKeyChecking no
+   UserKnownHostsFile=/dev/null
+\end{verbatim}
+
+Avoid ssh's password:
+\begin{verbatim}
+    ssh-keygen -b 4096 -t rsa
+    ssh-copy-id bsc21774@mn1.bsc.es
+\end{verbatim}
+
+
+%------------------------------------------------
+
+\question{GDB}\label{GDB}
+
+On \texttt{\$HOME} create a \texttt{.gdbinit} file and write:
+
+\begin{verbatim}
+set history save on
+\end{verbatim}
+
+
+Breakpoint at line 13 of main.c:
+\begin{verbatim}
+b main.c : 13 
+\end{verbatim}
+
+Breakpoint at function (enters inside:
+\begin{verbatim}
+b function
+\end{verbatim}
+
+Breakpoint condicional:
+\begin{verbatim}
+b main.c : 13 if a==2
+\end{verbatim}
+
+Info Brakpoints:
+\begin{verbatim}
+i b  
+\end{verbatim}
+
+Delete Breakpoint \#1:
+\begin{verbatim}
+d 1
+\end{verbatim}
+
+Run:
+\begin{verbatim}
+r
+\end{verbatim}
+
+Continue to the next breakpoint:
+\begin{verbatim}
+c
+\end{verbatim}
+
+Finish (scapes from the current function):
+\begin{verbatim}
+f
+\end{verbatim}
+
+Print variable ``a'':
+\begin{verbatim}
+p a
+\end{verbatim}
+
+
+%------------------------------------------------
+
+\question{Disks}\label{Disks}
+
+List connected disks (as root):
+\begin{verbatim}
+fdisk -l 
+umount /dev/<device>
+mkdir  /media/<folder to mount>
+mount -o rw,uid=1000,gid=1000,user,exec,umask=003 /dev/<device> /media/<folder to mount>
+\end{verbatim}
+
+%------------------------------------------------
+
+\question{Screen}\label{Screen}
+
+For dual screens (BSC = laptop + monitor):
+\begin{verbatim}
+xrandr
+xrandr --output LVDS1 --mode 1280x800
+xrandr --output DP1   --mode 1920x1080 --left-of LVDS1
+\end{verbatim}
+
+To put the correct devices and sizes \texttt{xrandr} alone list the devices available.
+
+%------------------------------------------------
+
+\question{PDF}\label{PDF}
+
+Diminish \texttt{pdf} quality:
+
+\begin{verbatim}
+//convert -density 200x200 -quality 60 -compress jpeg input.pdf output.pdf
+\end{verbatim}
+
+Convert \texttt{jpg} to \texttt{pdf}:
+
+\begin{verbatim}
+convert input.jpg output.pdf
+\end{verbatim}
+
+Extract pages:
+\begin{verbatim}
+pdftk input.pdf cat 12-15 output output.pdf
+\end{verbatim}
+
+Rotate pages:
+\begin{verbatim}
+pdftk padron1.pdf cat 1-endwest output padron2.pdf
+pdftk A=iscrizione_1.pdf cat A1-4 A5east output iscrizione_2.pdf
+\end{verbatim}
+
+Join:
+\begin{verbatim}
+pdfjoin a.pdf b.pdf c.pdf -o output.pdf
+\end{verbatim}
+%------------------------------------------------
+\question{GDB}\label{GDB}
+
+\begin{verbatim}
+gdb --args program <args>
+\end{verbatim}
+Set breakpoints:
+\begin{verbatim}
+b <file_name>:#line
+b <function_name>
+run      (alias:r)
+continue (alias:c)
+p <variable_name>
+\end{verbatim}
+Continue until the current loop finish:
+\begin{verbatim}
+until    
+\end{verbatim}
+
+
+%------------------------------------------------
+
+\question{GIT}\label{PDF}
+
+\begin{verbatim}
+git status
+git diff <file name>
+\end{verbatim}
+
+%------------------------------------------------
+
+\question{Alya}\label{PDF}
+
+gmsh2alya
+\begin{verbatim}
+gmsh2alya <mesh_file> --bsc=boundaries
+\end{verbatim}
+
+%------------------------------------------------
+
+\question{Mercurial}\label{Mercurial}
+
+Basic commands
+\begin{verbatim}
+hg init
+hg add <filename>
+hg commit -m "message"
+hg push
+hg pull
+\end{verbatim}
+
+File \verb .hgignore :
+\begin{verbatim}
+syntax: glob
+
+obj/*.o
+*.vtk
+*.msh
+*.png
+\end{verbatim}  
+
+
+
+%------------------------------------------------
+
+\question{Xmodmap}\label{Xmodmap}
+
+\begin{verbatim}
+xmodmap -e "remove Lock= Caps_Lock" 
+xmodmap -e "keysym Caps_Lock = Escape" 
+\end{verbatim}
+%------------------------------------------------
+
+\question{xterm}\label{xterm}
+
+\begin{verbatim}
+su
+xrdb -merge ~/.Xresources
+\end{verbatim}
+
+%------------------------------------------------
+\question{Pyxplot}\label{Pyxplot}
+
+\begin{verbatim}
+set terminal landscape pdf enlarge
+set output 'energy.pdf'
+
+set xlabel "Displacement [m]"
+set ylabel "Energy"
+set key bottom right
+
+plot 'energy.dat' u 1:($4)    w l every 1::1::1000 title "External",\
+     'energy.dat' u 1:($5)    w P every 50::1::1000 title "Internal",\
+     'energy.dat' u 1:($2+$3) w p every 57::1::1000 title "E+P"
+     
+set output ’uniaxial_dipl.pdf’
+set xlabel "$u$"
+set ylabel "$v$"
+set key top right
+set grid   
+plot 'file123.dat' u 1:2 w l title "Solidz (TL)",\
+     'file123.dat' u 1:3 w p pt 1 ps 0.7  title "Code\_Aster (TL)"  ,\
+     'ostero_uniaxial/disp.dat' u 1:2 w lp pt 1 ps 0.7 title "Ostero (SD)"
+\end{verbatim}
+
+%------------------------------------------------
+\question{Gnuplot}\label{Gnuplot}
+
+Plot a matrix:
+\begin{verbatim}
+plot 'matrix.dat' matrix with image
+\end{verbatim}
+
+%------------------------------------------------
+
+\question{Kate}\label{Kate}
+
+Highlighting folder KDE 4:
+
+\begin{verbatim}
+~/.kde/share/apps/katepart/syntax/
+\end{verbatim}
+
+Highlighting folder KDE 5:
+
+\begin{verbatim}
+~/.local/share/katepart5/syntax/
+\end{verbatim}
+
+%------------------------------------------------
+\newpage
+\question{Python}\label{Python}
+
+Program header:
+
+\begin{verbatim}
+#!/usr/bin/env python
+\end{verbatim}
+
+Simple for loop:
+\begin{verbatim}
+for i in range(10):
+   print i
+\end{verbatim}
+
+String operations:
+\begin{verbatim}
+name = name.replace('"','')
+\end{verbatim}
+
+Numpy utilities:
+\begin{verbatim}
+import numpy as np
+
+vector = [1,2]
+np.linalg.norm(vector)
+\end{verbatim}
+
+%------------------------------------------------
+\newpage
+\question{Awk}\label{Awk}
+
+Invert rows:
+
+\begin{verbatim}
+#!/bin/bash
+awk '
+BEGIN {i=1}      
+{ for (j=1; j<=NF; j++)  
+       a[i,j] = $j
+  i++;}
+NF>p { p = NF }
+END {
+    for(i=NR; i>0; i--) {
+        str=""; 
+        for(j=0; j<=p; j++)
+            str=str" "a[i,j];      
+        str=str;
+        print str
+    }
+}' $1 > $2 
+\end{verbatim}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
