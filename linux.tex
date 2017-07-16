@@ -109,6 +109,25 @@ Avoid ssh's password:
     ssh-copy-id bsc21774@mn1.bsc.es
 \end{verbatim}
 
+Create a repository on Marenostrum for running thing there updating code only doing \verb push and \verb pull .
+
+On Marenostrum:
+\begin{verbatim}
+ mkdir sputnik.git
+ cd sputnik.git
+ git init --bare
+\end{verbatim}
+
+On Local computer:
+\begin{verbatim}
+ git remote add mn1 bsc21774@mn1.bsc.es:/gpfs/home/bsc21/bsc21774/codes/sputnik.git/
+ git push --all mn1
+\end{verbatim}
+
+On Marenostrum:
+\begin{verbatim}
+ git clone sputnik.git
+\end{verbatim}
 
 %------------------------------------------------
 
