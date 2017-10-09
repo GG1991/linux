@@ -7,7 +7,6 @@ if __name__ == '__main__':
   configure_options = [
     '--with-mpi-dir=/home/guido/libs/openmpi-install',
     '--with-debugging=0',
-    '--download-mpe'
-    '--PETSC_ARCH=arch-linux-gcc-real-opt'
+    '--PETSC_ARCH=arch-linux-opt'
     ]
   configure.petsc_configure(configure_options)
