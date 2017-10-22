@@ -112,7 +112,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=$PATH:~/bin
-export PETSC_DIR=/home/guido/libs/petsc-3.7.5
-export PETSC_ARCH=arch-linux2-c-debug
-export SLEPC_DIR=/home/guido/libs/slepc-3.7.3
+set -o vi
+
+alias pvpython="/home/guido/codes/paraview-5.4.1/bin/pvpython"
+
+export PYTHONPATH="${PYTHONPATH}:/home/guido/codes/python_tools"
+
+export PATH=$PATH:~/bin:~/codes/SALOME-8.2.0-DB8.5
+export PETSC_DIR=/home/guido/libs/petsc-3.7.7
+export PETSC_ARCH=arch-linux-opt
+export SLEPC_DIR=/home/guido/libs/slepc-3.7.4
