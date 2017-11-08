@@ -88,9 +88,13 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
+MN1=bsc21774@mn1.bsc.es
+MT1=bsc21774@mt1.bsc.es
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias mn1="ssh $MN1"
+alias mt1="ssh $MT1"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
