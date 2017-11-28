@@ -82,7 +82,7 @@
 
 \raggedright
 \footnotesize
-\begin{multicols}{3}
+\begin{multicols}{2}
 
 
 % multicol parameters
@@ -100,14 +100,9 @@
 \section{PDF format}
 \begin{tabular}{@{}ll@{}}
 \verb!pdfcrop [options] <input[.pdf]> [output file]! & crops pdf to the size of the image \\
-%\verb!letter!  & Letter (?). \\
 \end{tabular}
-
-Used at the very beginning of a document:
-\verb!\documentclass{!\textit{class}\verb!}!.  Use
-\verb!\begin{document}! to start contents and \verb!\end{document}! to
-end the document.
-
+Example:\\
+\verb!pdfcrop --margins '-10 -10 -10 -10' input.pdf!
 
 \subsection{Common \texttt{documentclass} options}
 \newlength{\MyLen}
