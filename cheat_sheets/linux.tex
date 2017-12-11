@@ -123,11 +123,17 @@ Example:\\
 \subsection{\texttt{sed}}
 \begin{tabular}{@{}ll@{}}
 \verb!sed -i s/regexp\_old/regexp\_new/g <file>! & replace in the place \\
+\verb!sed -i nd <file>! & deletes line \verb n \\
 \end{tabular}
 
 \subsection{\texttt{awk}}
 \begin{tabular}{@{}ll@{}}
 \verb!awk '/hola/\{print \$1\}' <file>! & prints first record in every line with \verb hola \\
+\end{tabular}
+
+\subsection{\texttt{jobs}}
+\begin{tabular}{@{}ll@{}}
+\verb!for j in `bjobs | awk '{print $1} '` ; do bkill $j ; done! & kills all the jobs
 \end{tabular}
 
 \newlength{\MyLen}
