@@ -82,7 +82,7 @@
 
 \raggedright
 \footnotesize
-\begin{multicols}{2}
+%\begin{multicols}{1}
 
 
 % multicol parameters
@@ -110,10 +110,9 @@
 
 \section{\texttt{pdf} tools}
 \begin{tabular}{@{}ll@{}}
-\verb!pdfcrop [options] <input[.pdf]> [output file]! & crops pdf to the size of the image \\
+\verb!pdfcrop --margins '<left> <top> <right> <bottom>' <input[.pdf]> [output file]! & crops pdf to the size of the image \\
+\verb!pdfjoin <file_1.pdf> <file_2.pdf> -o <output_file.pdf>! & join pdfs
 \end{tabular}
-Example:\\
-\verb!pdfcrop --margins '-10 -10 -10 -10' input.pdf!
 
 \subsection{\texttt{bash}}
 \begin{tabular}{@{}ll@{}}
@@ -150,5 +149,5 @@ Copyright \copyright\ 2014 Winston Chang
 \href{http://wch.github.io/latexsheet/}{http://wch.github.io/latexsheet/}
 
 
-\end{multicols}
+%\end{multicols}
 \end{document}
