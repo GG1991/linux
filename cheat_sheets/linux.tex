@@ -105,7 +105,9 @@
 \texttt{push}     & \\
 \texttt{git log --diff-filter=D --summary | grep delete} &  shows files deleted from repository. \\
 \texttt{git log --all -- <filepath>} & shows commit when it was deleted. \\
-\texttt{git checkout <SHA> -- <filepath>} & restore the file.
+\texttt{git checkout <SHA> -- <filepath>} & restore the file. \\
+\texttt{git show HEAD} & shows last commit \\
+\texttt{git diff HEAD..HEAD{\raise.17ex\hbox{$\scriptstyle\sim$}}2} & shows differences between last and 2 previous commits \\
 \end{tabular}
 
 \section{\texttt{pdf} tools}
@@ -123,6 +125,7 @@
 \begin{tabular}{@{}ll@{}}
 \verb!sed -i s/regexp\_old/regexp\_new/g <file>! & replace in the place \\
 \verb!sed -i nd <file>! & deletes line \verb n \\
+\verb!sed -i -e 's/for(/for (/g' -e 's/while(/while (/g' -e 's/if(/if (/g' -e 's/){/) {/g' <file.c>! & K-R C indexing \\
 \end{tabular}
 
 \subsection{\texttt{awk}}
