@@ -99,15 +99,14 @@
 
 \subsection{\texttt{Git}}
 \begin{tabular}{@{}ll@{}}
-\texttt{commit -m "<message>"} & \\
-\texttt{ls-files} & \\
-\texttt{pull}     & \\
-\texttt{push}     & \\
+\texttt{git commit -m "<message>"} & \\
+\texttt{git ls-files} & \\
 \texttt{git log --diff-filter=D --summary | grep delete} &  shows files deleted from repository. \\
 \texttt{git log --all -- <filepath>} & shows commit when it was deleted. \\
 \texttt{git checkout <SHA> -- <filepath>} & restore the file. \\
 \texttt{git show HEAD} & shows last commit \\
 \texttt{git diff HEAD..HEAD{\raise.17ex\hbox{$\scriptstyle\sim$}}2} & shows differences between last and 2 previous commits \\
+\texttt{git push origin --delete <branch>} & delete branch on remote repository \\
 \end{tabular}
 
 \section{\texttt{pdf} tools}
