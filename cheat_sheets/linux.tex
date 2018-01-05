@@ -138,6 +138,20 @@
 \verb!for j in `bjobs | awk '{print $1} '` ; do bkill $j ; done! & kills all the jobs
 \end{tabular}
 
+\subsection{\texttt{Gnuplot}}
+\begin{tabular}{@{}ll@{}}
+\verb!set xrange [-10:10]! & \\
+\verb!set logscale xz! & \\
+\verb!plot 'omega_direct_0.dat' u 1:2 w lp,'omega_us_0.dat' u 1:2 w lp! & \\
+\end{tabular}
+
+\subsection{\texttt{Unix}}
+\begin{tabular}{@{}ll@{}}
+\verb!passwd! & change user password \\
+\verb!whoami! & \\
+\verb!who! & who is logged \\
+\end{tabular}
+
 \newlength{\MyLen}
 \settowidth{\MyLen}{\texttt{letterpaper}/\texttt{a4paper} \ }
 
