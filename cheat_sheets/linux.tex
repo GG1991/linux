@@ -113,7 +113,8 @@
 \section{\texttt{pdf} tools}
 \begin{tabular}{@{}ll@{}}
 \verb!pdfcrop --margins '<left> <top> <right> <bottom>' <input[.pdf]> [output file]! & crops pdf to the size of the image \\
-\verb!pdfjoin <file_1.pdf> <file_2.pdf> -o <output_file.pdf>! & join pdfs
+\verb!pdfjoin <file_1.pdf> <file_2.pdf> -o <output_file.pdf>! & join pdfs \\
+\verb!pdftk A=<file.pdf> cat A<n> output <output.pdf>! & extract page
 \end{tabular}
 
 \subsection{\texttt{bash}}
