@@ -14,25 +14,9 @@
 %  dvips -P pdf  -t landscape latexsheet.dvi
 %  ps2pdf latexsheet.ps
 
-
-% If you're reading this, be prepared for confusion.  Making this was
-% a learning experience for me, and it shows.  Much of the placement
-% was hacked in; if you make it better, let me know...
-
-
-% 2008-04
-% Changed page margin code to use the geometry package. Also added code for
-% conditional page margins, depending on paper size. Thanks to Uwe Ziegenhagen
-% for the suggestions.
-
-% 2006-08
-% Made changes based on suggestions from Gene Cooperman. <gene at ccs.neu.edu>
-
-
 % To Do:
 % \listoffigures \listoftables
 % \setcounter{secnumdepth}{0}
-
 
 % This sets page margins to .5 inch if using letter paper, and to 1cm
 % if using A4 paper. (This probably isn't strictly necessary.)
@@ -151,6 +135,11 @@
 \verb!passwd! & change user password \\
 \verb!whoami! & \\
 \verb!who! & who is logged \\
+\end{tabular}
+
+\subsection{\texttt{Keyboard}}
+\begin{tabular}{@{}ll@{}}
+\verb!sudo su -c "echo -n 0x02 > /sys/module/hid_apple/parameters/fnmode"! & for using F keys on a Mac.
 \end{tabular}
 
 \newlength{\MyLen}
