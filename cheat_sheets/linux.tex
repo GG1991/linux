@@ -138,8 +138,11 @@
 \end{tabular}
 
 \subsection{\texttt{Keyboard}}
+For using \verb F  keys without \verb fn  stupid key on a Mac.\\
 \begin{tabular}{@{}ll@{}}
-\verb!sudo su -c "echo -n 0x02 > /sys/module/hid_apple/parameters/fnmode"! & for using F keys on a Mac.
+\verb!echo options hid_apple fnmode=2 | sudo tee -a /etc/modprobe.d/hid_apple.conf! & configuration for fn key \\
+\verb!sudo update-initramfs -u -k all! & copying the configuration into the initramfs bootfile \\
+\verb!sudo reboot! & reboot
 \end{tabular}
 
 \newlength{\MyLen}
