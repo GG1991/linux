@@ -93,8 +93,11 @@ MT1=bsc21774@mt1.bsc.es
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
-alias mn1="ssh $MN1"
-alias mt1="ssh $MT1"
+alias mn1="ssh -X $MN1"
+alias mt1="ssh -X $MT1"
+alias pvpython="/home/guido/codes/paraview-5.4.1/bin/pvpython"
+
+export PYTHONPATH="${PYTHONPATH}:/home/guido/codes/python_tools"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -118,11 +121,7 @@ fi
 
 set -o vi
 
-alias pvpython="/home/guido/codes/paraview-5.4.1/bin/pvpython"
-
-export PYTHONPATH="${PYTHONPATH}:/home/guido/codes/python_tools"
-
-export PATH=$PATH:~/bin:~/codes/SALOME-8.2.0-DB8.5
+export PATH
 export PETSC_DIR=/home/guido/libs/petsc-3.7.7
 export PETSC_ARCH=arch-linux-opt
 export SLEPC_DIR=/home/guido/libs/slepc-3.7.4
