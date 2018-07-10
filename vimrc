@@ -1,4 +1,3 @@
-"
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
@@ -17,21 +16,18 @@ if &term =~ "xterm\\|rxvt"
   autocmd VimLeave * silent !echo -ne "\033]112\007"
   " use \003]12;gray\007 for gnome-terminal
 endif
+
 " disable vi compatibility (emulation of old bugs)
 set nocompatible
-" use indentation of previous line
-set autoindent
-set shiftwidth=2     " indent also with 4 spaces
-" use intelligent indentation for C
-set smartindent
-" wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
-set textwidth=120
+set noet ci pi sts=0 sw=4 ts=4
+set textwidth=80
+
 " turn syntax highlighting on
 set t_Co=256
 syntax on
-" colorscheme wombat256
-" turn line numbers on
+colorscheme torte
 set number
+
 " highlight matching braces
 " set showmatch
 " intelligent comments
@@ -40,8 +36,8 @@ map <C-c> :s/^/\/\//<Enter>
 map <C-p> :s/^\/\///<Enter>
 map <C-e> :setlocal spell spelllang=en_us<Enter>
 map <C-t> :set nospell<Enter>
+
 " Enhanced keyboard mappings
-"
 " in normal mode F2 will save the file
 nmap <F2> :w<CR>
 " in insert mode F2 will exit insert, save, enters insert again
